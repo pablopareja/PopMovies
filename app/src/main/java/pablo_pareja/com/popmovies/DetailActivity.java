@@ -11,28 +11,27 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by pablo on 07/02/17.
  */
 
 public class DetailActivity extends AppCompatActivity {
 
-    private TextView mTvMovieTitle;
-    private ImageView mMoviePoster;
-    private TextView mTvReleaseDate;
-    private TextView mTvVoteAverage;
-    private TextView mTvSynopsis;
+    @BindView(R.id.tv_movie_title) TextView mTvMovieTitle;
+    @BindView(R.id.movie_poster) ImageView mMoviePoster;
+    @BindView(R.id.tv_release_date) TextView mTvReleaseDate;
+    @BindView(R.id.tv_vote_average) TextView mTvVoteAverage;
+    @BindView(R.id.tv_synopsis) TextView mTvSynopsis;
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        mTvMovieTitle = (TextView) findViewById(R.id.tv_movie_title);
-        mMoviePoster = (ImageView) findViewById(R.id.movie_poster);
-        mTvReleaseDate = (TextView) findViewById(R.id.tv_release_date);
-        mTvVoteAverage = (TextView) findViewById(R.id.tv_vote_average);
-        mTvSynopsis = (TextView) findViewById(R.id.tv_synopsis);
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
 
@@ -48,7 +47,11 @@ public class DetailActivity extends AppCompatActivity {
                     mTvMovieTitle.setText(movieData.getString("original_title"));
 
                     String imageURL = "http://image.tmdb.org/t/p/w185/" + movieData.getString("poster_path");
-                    Picasso.with(this).load(imageURL).into(mMoviePoster);
+                    Picasso.with(this)
+                            .load(imageURL)
+                            .placeholder(R.drawable.movie)
+                            .error(R.drawable.error)
+                            .into(mMoviePoster);
 
                 }catch (JSONException e){
                     e.printStackTrace();
