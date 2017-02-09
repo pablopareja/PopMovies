@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PopMovies</string>
+    <string name="action_most_popular">Most Popular</string>
+    <string name="action_top_rated">Top Rated</string>
+    <string name="the_movie_db_api_key"></string>
+    <string name="the_movie_db_base_url">https://api.themoviedb.org/3/movie/</string>
+    <string name="movie_db_popular">popular/</string>
+    <string name="movie_db_top_rated">top_rated/</string>
+    <string name="the_movie_db_api_key_param">api_key</string>
+    <string name="poster_base_url">http://image.tmdb.org/t/p/</string>
+    <string name="poster_grid_size">w185</string>
+</resources>
